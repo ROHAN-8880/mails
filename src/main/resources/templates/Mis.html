@@ -1,0 +1,88 @@
+<!DOCTYPE>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIS Dashboard</title>
+    <link rel="stylesheet" th:href="@{/misStyles.css}"/>
+    <script th:src="@{/misScript.js}" defer></script>
+    <link rel="stylesheet" th:href="@{/menuBarStyles.css}" />
+    <script th:src="@{/menuBarScript.js}" defer></script>
+</head>
+<body>
+<div th:replace="~{menuBar :: menuBar}"></div>
+<!--<div class="dashboard">-->
+<!--    <div class="logo">-->
+<!--        <img th:src="@{/images/logo.nexgen.png}" alt="logo">-->
+<!--    </div>-->
+<!--    <h2>DASHBOARD</h2>-->
+<!--    <ul>-->
+<!--        <li><a href="/tables">View Records</a></li>-->
+<!--        <li><a href="javascript:void(0)" onclick="toggleForm(event)">Add New MIS</a></li>-->
+<!--        <li><a href="/reports">Generate Reports</a></li>-->
+<!--        <li><a href="/settings">Settings</a></li>-->
+<!--        <li><a href="/logout">Logout</a></li>-->
+<!--    </ul>-->
+<!--</div>-->
+
+<div class="form-container"  id="misForm">
+    <h1>MIS FORM</h1>
+    <form action="/MisSave" method="post" th:object="${misData}" id="misData">
+        <div class="form-grid">
+            <div><label for="date">Date:</label><input type="date" id="date" th:field="*{date}"  required /></div>
+            <div><label for="customerName">Customer Name:</label><input type="text" id="customerName" th:field="*{customerName}" required /></div>
+            <div><label for="jobREF">Job REF#:</label><input type="text" id="jobREF" th:field="*{jobREF}" required /></div>
+            <div><label for="SILP">Description:</label><input type="text" id="SILP" th:field="*{SILP}" required /></div>
+            <div><label for="customerCount">Customer Count:</label><input type="number" id="customerCount" th:field="*{customerCount}" required /></div>
+            <div><label for="numberOfPages">Number of Pages:</label><input type="number" id="numberOfPages" th:field="*{numberOfPages}" required /></div>
+            <div><label for="numberOfSheets">Number of Sheets:</label><input type="number" id="numberOfSheets" th:field="*{numberOfSheets}" required /></div>
+            <div><label for="artWork">Art Work:</label><input type="text" id="artWork" th:field="*{artWork}" required /></div>
+            <div>
+                <label for="sizeOfTheStationery">Size of the Stationery:</label>
+                <select id="sizeOfTheStationery" th:field="*{sizeOfTheStationery}" required>
+                    <option value="" disabled selected>Select Size</option>
+                    <option value="A4">A4</option>
+                    <option value="A3">A3</option>
+                    <option value="Letter">Letter</option>
+                    <option value="Custom">Custom</option>
+                </select>
+            </div>
+            <div><label for="prePrintingWithColour">Pre-Printing with Colour:</label><input type="text" id="prePrintingWithColour" th:field="*{prePrintingWithColour}" required /></div>
+            <div><label for="sizeOfTheEnvelop">Size of the Envelope:</label><input type="text" id="sizeOfTheEnvelop" th:field="*{sizeOfTheEnvelop}" required /></div>
+            <div>
+                <label for="modeOfPrinting">Mode of Printing:</label>
+                <select id="modeOfPrinting" th:field="*{modeOfPrinting}" required>
+                    <option value="" disabled selected>Select Mode</option>
+                    <option value="Duplex">Duplex</option>
+                    <option value="Simplex">Simplex</option>
+                </select>
+            </div>
+            <div>
+                <label for="folding">Folding:</label>
+                <select id="folding" th:field="*{folding}" required>
+                    <option value="" disabled selected>Select Folding Type</option>
+                    <option value="Single">Single</option>
+                    <option value="Double">Double</option>
+                    <option value="Accordion">Accordion</option>
+                </select>
+            </div>
+            <div><label for="stuffingAndIlc">Stuffing and ILC:</label><input type="text" id="stuffingAndIlc" th:field="*{stuffingAndIlc}" required /></div>
+            <div><label for="ilc">ILC:</label><input type="text" id="ilc" th:field="*{ilc}" required /></div>
+            <div><label for="blankStationery">Blank Stationery:</label><input type="text" id="blankStationery" th:field="*{blankStationery}" required /></div>
+            <div><label for="registeredPostAckCard">Registered Post Ack Card:</label><input type="text" id="registeredPostAckCard" th:field="*{registeredPostAckCard}" required /></div>
+            <div><label for="registeredPost">Registered Post:</label><input type="text" id="registeredPost" th:field="*{registeredPost}" required /></div>
+            <div><label for="speedPost">Speed Post:</label><input type="text" id="speedPost" th:field="*{speedPost}" required /></div>
+            <div><label for="ilcRegisteredPost">ILC Registered Post:</label><input type="text" id="ilcRegisteredPost" th:field="*{ilcRegisteredPost}" required /></div>
+            <div><label for="dateOfReceipt">Date of Receipt:</label><input type="date" id="dateOfReceipt" th:field="*{dateOfReceipt}" required /></div>
+            <div><label for="approvalReceived">Approval Received:</label><input type="text" id="approvalReceived" th:field="*{approvalReceived}" required /></div>
+            <div><label for="dateOfCompletion">Date of Completion:</label><input type="date" id="dateOfCompletion" th:field="*{dateOfCompletion}" required /></div>
+            <div><label for="jobHandedOverTo">Job Handed Over To:</label><input type="text" id="jobHandedOverTo" th:field="*{jobHandedOverTo}" required /></div>
+            <div><label for="deliveryChallan$DocketNo">Delivery Challan/Docket No:</label><input type="text" id="deliveryChallan$DocketNo" th:field="*{deliveryChallan$DocketNo}" required /></div>
+            <div><label for="invoicedOn">Invoiced On:</label><input type="date" id="invoicedOn" th:field="*{date}" required /></div>
+            <div><label for="remarks">Remarks:</label><input type="text" id="remarks" th:field="*{remarks}" required /></div>
+        </div>
+        <button type="submit">Save</button>
+    </form>
+</div>
+</body>
+</html>

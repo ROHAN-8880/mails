@@ -1,0 +1,92 @@
+   {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.form-container {
+    margin-left: 20px;/* Adjusted for reduced dashboard width + 10px space */
+    margin-right: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 50%; /* Adjust width to fill the rest of the screen */
+    max-width: 1000px;
+    margin-top: 20px;
+    flex-grow: 1;
+    height: 90vh;
+    overflow-y: auto;
+    display: none; /* Hide form initially */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+.form-grid div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-grid label {
+    font-weight: bold;
+    margin-right: 5px;
+    white-space: nowrap;
+}
+
+.form-grid input {
+    width: calc(100% - 5px);
+    padding: 5px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+/* Smaller width for date and count input fields */
+    .form-grid input[type="date"],
+    .form-grid input[id*="Count"],
+    .form-grid input[type="number"]{
+        width: 120px;
+    }
+
+button {
+    width: 10%;
+    padding: 8px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+label, input::placeholder {
+    text-transform: uppercase;
+}
+
+input {
+    text-transform: uppercase;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Bar</title>
+<!--  <link rel="stylesheet" th:href="@{/menuBar/menuBarStyles.css}"/>-->
+<!--  <script th:src="@{/menuBar/menuBarScript.js}" defer></script>-->
+</head>
+<body>
+<div class="dashboard" th:fragment="menuBar" xmlns:th="http://www.w3.org/1999/xhtml">
+  <button class="toggle-btn" onclick="toggleMenu()">&#9776;</button>
+  <div class="logo">
+    <img th:src="@{/images/logo.nexgen.png}" alt="logo">
+  </div>
+    <nav>
+      <ul>
+        <li><a href="/tables"><i class="fas fa-table"></i> DASH BOARD</a></li>
+        <li><a href="/mis.html?showForm=true"><i class="fas fa-plus"></i> Add New MIS</a></li>
+        <li><a href="/reports"><i class="fas fa-chart-line"></i> Generate Reports</a></li>
+        <li><a href="/settings"><i class="fas fa-cogs"></i> Settings</a></li>
+        <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+      </ul>
+    </nav>
+</div>
+
+<div id="misFormContainer"></div>
+
+<!--<div class="main-content">-->
+<!--  &lt;!&ndash; Main content will go here &ndash;&gt;-->
+<!--</div>-->
+</body>
+</html>

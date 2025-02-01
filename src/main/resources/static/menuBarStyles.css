@@ -1,0 +1,185 @@
+ /* Reset default styling */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Body */
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    height: 100vh;
+    justify-content: flex-start;
+    align-items: stretch;
+    transition: margin-left 0.3s ease;
+  }
+
+  /* Sidebar Menu */
+  .dashboard {
+    background-color: #1abc9c;  /* New Color */
+    color: #fff;
+    padding: 20px;
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+  }
+
+  /* Logo */
+  .menu .logo {
+      display: flex;
+      flex-direction: column; /* Stacks elements vertically */
+      justify-content: center;
+      align-items: center; /* Centers the logo horizontally */
+      margin-bottom: 30px;
+  }
+
+  .menu .logo img {
+      width: 200px; /* Adjust the width as needed */
+      height: auto; /* Maintain the original aspect ratio */
+      padding: 10px; /* Optional: Adds space around the image */
+      object-fit: contain; /* Ensure the logo fits within the area without cropping */
+      background-color: transparent; /* No background color */
+  }
+
+  /* Title */
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #ecf0f1;
+    text-align: center;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+  }
+
+  /* Menu List */
+  ul {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+  }
+
+  ul li {
+    margin: 15px 0;
+    width: 100%;
+  }
+
+  ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  ul li a:hover {
+    background-color: #16a085;
+  }
+
+  /* Active Link */
+  ul li a.active {
+    background-color: #1abc9c;
+  }
+
+  /* Add New MIS Form */
+  .add-mis-form {
+    display: none;
+    margin-top: 20px;
+    background-color: #bdc3c7;
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%;
+  }
+
+  .add-mis-form input,
+  .add-mis-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+  }
+
+  .add-mis-form button {
+    padding: 12px 20px;
+    background-color: #1abc9c;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .add-mis-form button:hover {
+    background-color: #16a085;
+  }
+
+  /* Menu Icon */
+  ul li a i {
+    margin-right: 15px;
+    font-size: 20px;
+  }
+
+  /* Toggle Button */
+  .toggle-btn {
+    font-size: 24px;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    z-index: 1100;
+    transition: transform 0.3s ease;
+  }
+
+  .toggle-btn:hover {
+    color: #ecf0f1;
+  }
+
+  /* Hide Menu Items (Not the button) */
+  .dashboard.hidden {
+    transform: translateX(-150px);  /* Sidebar moves inside slightly */
+  }
+
+  /* Main Content */
+  .main-content {
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px);
+    transition: margin-left 0.3s ease;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .dashboard {
+      width: 200px;
+    }
+
+    .dashboard.hidden {
+      width: 0;
+    }
+
+    .main-content {
+      margin-left: 0;
+      width: 100%;
+    }
+  }

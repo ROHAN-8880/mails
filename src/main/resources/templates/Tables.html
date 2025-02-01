@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<title>Dynamic File Content Viewer</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+  table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+  }
+  th, td {
+      border: 1px solid black;
+      padding: 10px;
+      text-align: left;
+  }
+  th {
+      background-color: #f2f2f2;
+  }
+</style>
+</head>
+<body>
+
+<h2>File Content (Auto-Refresh Every 5 Seconds)</h2>
+
+<table id="fileTable">
+  <thead>
+  <tr>
+    <th>SUBJECT</th>
+    <th>FROM EMAIL ID</th>
+    <th>DATE AND TIME</th>
+    <th>TO EMAIL ID</th>
+    <th>EMAIL BODY</th>
+  </tr>
+  </thead>
+  <tbody id="fileContent">
+  <!-- Data will be populated here dynamically -->
+  </tbody>
+</table>
+
+<script>
+  function fetchFileContent() {
+      $.ajax({
+          url: "/view-Tables",  // Spring Boot API endpoint
+          type: "GET",
+          success: function(data) {
+              var tableBody = $("#fileContent");
+              tableBody.empty(); // Clear existing data
+
+              // Ensure data is in the correct format (array of objects)
+              data.forEach(function(email) {
+                  var row = "<tr>" +
+                      "<td>" + email.subject + "</td>" +
+                      "<td>" + email.fromEmail + "</td>" +
+                      "<td>" + email.dateTime + "</td>" +
+                      "<td>" + email.toEmail + "</td>" +
+                      "<td>" + email.emailBody + "</td>" +
+                      "</tr>";
+                  tableBody.append(row);  // Insert row into the table body
+              });
+          },
+          error: function() {
+              console.error("Error fetching file content");
+          }
+      });
+  }
+
+  // Fetch data initially
+  fetchFileContent();
+
+  // Auto-refresh every 5 seconds
+  setInterval(fetchFileContent, 5000);
+</script>
+</body>
+</html>
